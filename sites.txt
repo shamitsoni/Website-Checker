@@ -1,0 +1,6 @@
+Amazon https://www.amazon.com
+Google https://www.google.com
+Microsoft https://www.microsoft.com
+Youtube https://www.youtube.com
+X https://www.x.com
+FakeServer https://www.fakesite.wksjds
