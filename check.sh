@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
 LOG="status.log"
-TIME=$(date +"%Y-%m-%d %T")
 
 check_website_status(){
 	attempts=3
         while [ $attempts -gt 0 ]; do
                 if curl --output /dev/null --silent $2; then
-                        echo "$TIME: $1 is Operational" >> "$LOG"
+                        status="Online"
+                        echo -e "$1 ($2) -- \033[32m$status\033[0m -- $(date)" >> "$LOG"
                         echo "$1 ----- Operational"
                         break
                 else
@@ -18,7 +18,8 @@ check_website_status(){
         done
 
         if [ $attempts -eq 0 ]; then
-                echo "$TIME: $1 is offline" >> "$LOG"
+		status="Offline"
+                echo -e "$1 ($2) -- \033[31m$status\033[0m -- $(date)" >> "$LOG"
                 echo "$1 ----- Offline"
         fi
 }
